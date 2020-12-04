@@ -77,31 +77,8 @@ A{
   text-decoration: none;
   color: black;
 }
-#cnt{
-  position: relative;
-  height:654px;
-  width: 80%;
-  border: 2px solid rgba(12, 12, 12, 0.8);
-  background-image: url(images/menu.png);
-  background-size: cover;
-  background-position:center;
-  border-spacing: 0px 0px 30px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  background-repeat: no-repeat;
-  background-size: cover;
 
-}
-#li{
-  font-family: sans-serif;
-font-style: normal;
-font-weight: normal;
-font-size: 30px;
-line-height: 61px;
-position:relative;
-left:300px;
-}
+
 #contactus{  position: relative;
   height:654px;
   width: 80%;
@@ -124,6 +101,13 @@ left:300px;
   
   position: relative;
 }
+#select{
+  height:50px;
+}
+#left{
+  position: relative;
+  left: 600px;
+}
   </style >
 <body>
   <!Front Page -->
@@ -132,18 +116,34 @@ left:300px;
         <tr border="3" >
            <th align="Left" width="3%"><a name="abthome"><img src="images/Logo.jpg" height="25%"  ></a></th>
              
-           <th align="Left" ><a name="menu"><h1>Tasty </a><br> &nbsp;&nbsp; Grab!! </h1>></th>  
+           <th align="Left" ><a name="menu"><h1>Tasty </a><br> &nbsp;&nbsp; Grab!! </h1></th>  
           <td ><a name="cntback"></a></td> 
            <td align="center"><strong><h3 ><a href="#abtlink"><span class="glyphicon glyphicon-info-sign"></span> About US</a></h3></strong> </td> 
-           <td align="center"><strong><h3><a href="#menuback"><span class="glyphicon glyphicon-cutlery"></span> Menu</a></h3></strong></td> 
-           <td align="center"><strong><h3> <span class="glyphicon glyphicon-log-in"></span> Login</h3></strong></td>
-           <td align="center"><strong><h3><span class="glyphicon glyphicon-user"></span > Sign Up</h3></strong></td>
+           <td align="center"><strong><h3><span class="glyphicon glyphicon-cutlery"></span> Menu</h3></strong></td> 
            <td align="center"><strong><h3><a href="#cntback1"><span class="glyphicon glyphicon-earphone"></span> Contact</a></h3></strong></td>       
          </tr>
 
     </table>
    </div> 
     <div id="div2">
+      <form>
+        <table width="100%" id="left">
+          <td width="230px">
+          <h2 style="color: rgb(255, 255, 255);" >Your Location <span class="glyphicon glyphicon-screenshot" ></span></h2> 
+          </td>
+          <td>
+            <select name="Location" id="select">
+              <option value="1s">Banashankari 1st stage</option>
+              <option value="2s">Banashankari 2st stage</option>
+              <option value="3s">Banashankari 3rd stage</option>
+              <option value="jn">BTM Layout</option>
+              <option value="hs">Hoskerahalli</option>
+              <option value="kn">Kadirenahalli</option>
+              <option value="jn">Jayanagar</option>
+            </select>
+          </td>
+        </table>
+      </form>
       <p class="fnt"><br><br><br><strong>ORDER FOOD ONLINE</strong> </p>
       <p class="txt"><strong>Pizza,Burger & Dessert's...</strong></p>
      
@@ -154,7 +154,7 @@ left:300px;
     <h1 class="abtnm"><a name="abtlink">About US</a></h1>
     <p id="abtsen"> <a href="#abthome">
       &nbsp;  &nbsp; &nbsp;Tasty Grab!! is the best restuarant in Banglore,situated
-      in <br> Banashankari.We are very famous for our pizza's,Even we provide<br>
+      in <br> Banashankari.We are very famous for our pizza's,Even we<br> provide
       Online Food Delivery.<br>
       The restuarant started in 2016 and we won Indian Restaurant Congress Award in 2018.<br>
       Customer Sastifactory is the main goal for us.<br>
@@ -162,21 +162,13 @@ left:300px;
     </p>
 
   </div>    
-  <div id="cnt">
-     <table id="li">
-    <td id="li" align="center" style="width: 200px;"><strong><span class="glyphicon glyphicon-log-in"></span> Login</strong></td>
-    <td id="li" align="center" style="width: 200px;"><strong><span class="glyphicon glyphicon-user"></span > Sin Up</strong></td>
-    <td id="li" align="center" style="width: 200px;"><strong><a href="#menu">Back</a></strong></td>
-  <td><a name="menuback"></a></td> </table>
- 
-    
-  </div>
+
   <div id="contactus" >
     <table>
     <td id="col" id="contactus" style="left: 100px;">www.Tasty-Grab.com </td>
-    <td id="col" id="contactus" style="left: 200px;"> 123-456</td>
-    <td id="col" id="contactus" style="left: 300px;"> +91 201 405</td>
-    <td id="col" id="contactus" style="left: 350px;"> tatygrab@rst.com</td>
+    <td id="col" id="contactus" style="left: 180px;"> 123-456</td>
+    <td id="col" id="contactus" style="left: 200px;"> +91 201 405</td>
+    <td id="col" id="contactus" style="left: 220px;"> tatygrab@rst.com</td>
     <td><a name="cntback1"></a></td>
   </table>
   <h1 id="col" style="left:550px;" style="line-height: 100px;"><a href="#cntback">Back</a></h1>
