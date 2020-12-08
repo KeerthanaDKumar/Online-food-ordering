@@ -1,3 +1,11 @@
+<? php 
+   session_start();
+ 
+  $email=$_SESSION['lemail'];
+  $passwoed=$_SESSION['lpassword'];
+
+?>
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8"/>
@@ -42,7 +50,7 @@
   font-size: 40px;
   position: relative;
   line-height: 0px;
-  left:550px;
+  left:480px;
   text-shadow: 0px 4px 4px rgba(255, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 #abt{
@@ -118,32 +126,15 @@ A{
              
            <th align="Left" ><a name="menu"><h1>Tasty </a><br> &nbsp;&nbsp; Grab!! </h1></th>  
           <td ><a name="cntback"></a></td> 
-           <td align="center"><strong><h3 ><a href="#abtlink"><span class="glyphicon glyphicon-info-sign"></span> About US</a></h3></strong> </td> 
-           <td align="center"><strong><h3><span class="glyphicon glyphicon-cutlery"></span> Menu</h3></strong></td> 
-           <td align="center"><strong><h3><a href="#cntback1"><span class="glyphicon glyphicon-earphone"></span> Contact</a></h3></strong></td>       
+           <td align="center"><h3><a href="#abtlink"><input type="button" value="About US"></h3></td> 
+           <td align="center"><h3><a href="Signup.php"><input type="button" value="SIGN UP"></a></h3></td> 
+           <td align="center"><h3><a href="login.php"><input type="button" value="Login"></a></h3></td> 
+           <td align="center"><h3><a href="#cntback1"><input type="button" value="Contact"></a></h3></td>       
          </tr>
 
     </table>
    </div> 
     <div id="div2">
-      <form>
-        <table width="100%" id="left">
-          <td width="230px">
-          <h2 style="color: rgb(255, 255, 255);" >Your Location <span class="glyphicon glyphicon-screenshot" ></span></h2> 
-          </td>
-          <td>
-            <select name="Location" id="select">
-              <option value="1s">Banashankari 1st stage</option>
-              <option value="2s">Banashankari 2st stage</option>
-              <option value="3s">Banashankari 3rd stage</option>
-              <option value="jn">BTM Layout</option>
-              <option value="hs">Hoskerahalli</option>
-              <option value="kn">Kadirenahalli</option>
-              <option value="jn">Jayanagar</option>
-            </select>
-          </td>
-        </table>
-      </form>
       <p class="fnt"><br><br><br><strong>ORDER FOOD ONLINE</strong> </p>
       <p class="txt"><strong>Pizza,Burger & Dessert's...</strong></p>
      
