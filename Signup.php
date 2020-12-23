@@ -69,14 +69,14 @@ if(isset($_POST['submit'])){
         $area = mysqli_real_escape_string($conn, $_POST['area']);
         $ph_no = mysqli_real_escape_string($conn, $_POST['ph_no']);
         // create sql
-        $sql = "INSERT INTO user(user_name,email_id,ph_no,user_passwd,area) VALUES ('$name','$email','$ph_no','$password','$area')";
+        $sql = "INSERT INTO user(user_name,email_id,ph_no,user_passwd,area) VALUES ('$name','$email','$ph_no','$password','$area') ";
 
         // save to db and check
         if(mysqli_query($conn, $sql)){
             // success
             header('Location: login.php');
         } else {
-            echo 'query error: '. mysqli_error($conn);
+            echo '<script>alert("Email Already Exist")</script>';
         }
 
     }
