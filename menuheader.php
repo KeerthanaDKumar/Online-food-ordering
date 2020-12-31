@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	<title>Tasty Grab!!</title>
+	<title>Menu</title>
 	<!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <style type="text/css">
@@ -26,12 +26,9 @@
      <div class="container " >
      <a href="#" class="brand-logo brand-text">Tasty Grab!!</a>
       <ul id="nav-mobile" class="right hide-on-small-and-down">
-        <li><a href="Signup.php" class="btn brand z-depth-0">SIGN UP</a></li>
-		<li><a href="login.php" class="btn brand z-depth-0">Login</a></li>
-		<li><a href="admin.php" class="btn brand z-depth-0">Admin</a></li>
+        <li><a href="Main.php" class="btn brand z-depth-0"><input type="button" value="Back"></a></li>
       </ul>
     </div>
   </nav>
 
 </body>
-</html>

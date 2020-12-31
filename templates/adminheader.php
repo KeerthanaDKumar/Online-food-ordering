@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	<title>Tasty Grab!!</title>
+	<title>ADD PIZZA</title>
 	<!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <style type="text/css">
@@ -26,7 +26,7 @@
      <div class="container " >
      <a href="#" class="brand-logo brand-text">Tasty Grab!!</a>
       <ul id="nav-mobile" class="right hide-on-small-and-down">
-        <li>ADMIN LOGIN</li>
+        <li>ADMIN Page</li>
         <li><a href="#" class="btn brand z-depth-0">ADD PIZZA</a></li>
         <li><a href="#" class="btn brand z-depth-0">VIEW ORDERS</a></li>
       </ul>

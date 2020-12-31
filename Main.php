@@ -1,9 +1,5 @@
 <? php 
-   session_start();
- 
-  $email=$_SESSION['lemail'];
-  $passwoed=$_SESSION['lpassword'];
-
+  
 ?>
 
 <!DOCTYPE html>
@@ -129,6 +125,7 @@ A{
            <td align="center"><h3><a href="#abtlink"><input type="button" value="About US"></h3></td> 
            <td align="center"><h3><a href="Signup.php"><input type="button" value="SIGN UP"></a></h3></td> 
            <td align="center"><h3><a href="login.php"><input type="button" value="Login"></a></h3></td> 
+           <td align="center"><h3><a href="admin.php"><input type="button" value="Admin"></a></h3></td> 
            <td align="center"><h3><a href="#cntback1"><input type="button" value="Contact"></a></h3></td>       
          </tr>
 
@@ -159,7 +156,7 @@ A{
     <td id="col" id="contactus" style="left: 100px;">www.Tasty-Grab.com </td>
     <td id="col" id="contactus" style="left: 180px;"> 123-456</td>
     <td id="col" id="contactus" style="left: 200px;"> +91 201 405</td>
-    <td id="col" id="contactus" style="left: 220px;"> tatygrab@rst.com</td>
+    <td id="col" id="contactus" style="left: 220px;"> tastygrab@rst.com</td>
     <td><a name="cntback1"></a></td>
   </table>
   <h1 id="col" style="left:550px;" style="line-height: 100px;"><a href="#cntback">Back</a></h1>

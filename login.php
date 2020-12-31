@@ -1,75 +1,57 @@
 <?php
-    $er='';
+  session_start();
+  $email = "";
+  $password="";
+  $errors = [];
+  
 
 	include('config/db_connect.php');
 
-	$lemail = $lpassword = '';
-    $errors = array('lemail' => '', 'lpassword' => '');
-    $pizza=array('user_name' =>'','email_id' =>'','ph_no'=>'','user_password'=>'','area'=>'');
-
+	$email = $password = '';
+    $errors = array('email' => '', 'password' => '');
 	if(isset($_POST['submit'])){
 		
 		// check email
-		if(empty($_POST['lemail'])){
-			$errors['lemail'] = 'An email is required';
+		if(empty($_POST['email'])){
+			$errors['email'] = 'An email is required';
 		} else{
-			$email = $_POST['lemail'];
+			$email = $_POST['email'];
 			if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-				$errors['lemail'] = 'Email must be a valid email address';
+				$errors['email'] = 'Email must be a valid ';
 			}
 		}
 
 		// check password
-		if(empty($_POST['lpassword'])){
+		if(empty($_POST['password'])){
 			$errors['[lpassword'] = 'A password is required';
-		} else{
-			$lpassword = $_POST['lpassword'];
-			if(!preg_match('/^[a-zA-Z0-9\s]+$/', $lpassword)){
-				$errors['lpassword'] = 'password is not valid';
-			}
+		} 
 		}
 
 	    // check GET request id param
-	      if(isset($_POST['submit'])){
-              session_start();
-              
-              $_SESSION['email']=$_POST['lemail'];
-              $_SESSION['password']=$_POST['lpassword'];
-            
-          }
-          if(!array_filter($errors)){
+
+          if(array_filter($errors)){
             //echo 'errors in form';
         } else { 
            include('config/db_connect.php');
 		
-		// escape sql chars
-        $lemail = mysqli_real_escape_string($conn, $_POST['lemail']);
-        $lpassword = mysqli_real_escape_string($conn, $_POST['lpassword']);
 
 		// make sql
-		$sql = "SELECT email_id,user_password FROM user WHERE ('email_id' == $lemail)";
+		$sql = "SELECT email_id,user_password FROM user WHERE email_id='$email' AND user_password='$password'";
           if(mysqli_query($conn, $sql)){
 		 $result = mysqli_query($conn, $sql);
+		 $pizza = mysqli_fetch_assoc($result);
+
 
 		 // fetch result in array format
-          $pizza = mysqli_fetch_assoc($result);
-         if($pizza['email_id']== "dvpk511@gmail.com" && $pizza['user_passwd'] == '12345676'){
-            header('Location:admin.php');
-        }
-        elseif($pizza['email_id']===$lemail && $pizza['user_passwd']===$lpassword)
-        {
-            header('Location:menu.php');
-        }
+           
+		  header('Location: menu.php');
+        } 
         else{
-            //printing the error
-            $er="Invalid Data";
+           $errors['mail']="Invalid";
         }
     }
-        else {
-            echo 'query error: '. mysqli_error($conn);
-        }  
+  
 
-	}}
 
 	 // end POST check
 
@@ -84,17 +66,19 @@
 		<h4 class="center">Login</h4>
 		<form class="white" action="login.php" method="POST">
 			<label>Your Email</label>
-			<input type="text" name="lemail" value="<?php echo htmlspecialchars($lemail); ?>" >
-			<div class="red-text"><?php echo $errors['lemail']; ?><?php echo $er ?></div>
+			<input type="text" name="email" value="<?php echo htmlspecialchars($email); ?>" >
+			<div class="red-text"><?php echo $errors['email']; ?></div>
 			<label>Enter Password</label>
-			<input type="text" name="lpassword" value="<?php echo htmlspecialchars($lpassword); ?>">
-			<div class="red-text"><?php echo $errors['lpassword']; ?><?php echo $er ?></div>
+			<input type="text" name="password" value="<?php echo htmlspecialchars($password); ?>">
+			<div class="red-text"><?php echo $errors['password']; ?></div>
 			<div class="center">
 				<input type="submit" name="submit" value="Submit" class="btn brand z-depth-0">
 			</div>
 		</form>
+
 	</section>
 
 	<?php include('templates/footer.php'); ?>
+	
 
 </html>
