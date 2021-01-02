@@ -41,13 +41,10 @@
 								<?php foreach(explode(',', $pizza['cost']) as $ing): ?>
 									<li><?php echo htmlspecialchars($ing); ?></li>
                                 <?php endforeach; ?>
-                                <ul id="nav-mobile" class="right hide-on-small-and-down">
-                            <li><a href="cart.php" class="btn brand z-depth-0"><input type="button" value="Buy"></a></li>
-                            </ul>
 							</ul>
 						</div>
 						<div class="card-action right-align">
-							<a class="brand-text" href="details.php?id=<?php echo $pizza['id'] ?>">more info</a>
+							<a class="brand-text" href="details.php?id=<?php echo "Rs.";echo $pizza['id'] ?>">more info</a>
                         
 
                          </div>

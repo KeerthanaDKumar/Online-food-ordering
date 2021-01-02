@@ -126,6 +126,7 @@ A{
            <td align="center"><h3><a href="Signup.php"><input type="button" value="SIGN UP"></a></h3></td> 
            <td align="center"><h3><a href="login.php"><input type="button" value="Login"></a></h3></td> 
            <td align="center"><h3><a href="admin.php"><input type="button" value="Admin"></a></h3></td> 
+           <td align="center"><h3><a href="Menu.php"><input type="button" value="MENU"></a></h3></td>
            <td align="center"><h3><a href="#cntback1"><input type="button" value="Contact"></a></h3></td>       
          </tr>
 
@@ -133,7 +134,7 @@ A{
    </div> 
     <div id="div2">
       <p class="fnt"><br><br><br><strong>ORDER FOOD ONLINE</strong> </p>
-      <p class="txt"><strong>Pizza,Burger & Dessert's...</strong></p>
+      <p class="txt"><strong>Yummy Pizzas!!</strong></p>
      
     </div>
   <! About Us...-->
