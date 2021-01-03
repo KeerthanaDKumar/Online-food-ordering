@@ -124,7 +124,7 @@ A{
           <td ><a name="cntback"></a></td> 
            <td align="center"><h3><a href="#abtlink"><input type="button" value="About US"></h3></td> 
            <td align="center"><h3><a href="Signup.php"><input type="button" value="SIGN UP"></a></h3></td> 
-           <td align="center"><h3><a href="login.php"><input type="button" value="Login"></a></h3></td> 
+           <td align="center"><h3><a href="login1.php"><input type="button" value="Login"></a></h3></td> 
            <td align="center"><h3><a href="admin.php"><input type="button" value="Admin"></a></h3></td> 
            <td align="center"><h3><a href="Menu.php"><input type="button" value="MENU"></a></h3></td>
            <td align="center"><h3><a href="#cntback1"><input type="button" value="Contact"></a></h3></td>       

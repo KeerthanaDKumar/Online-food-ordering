@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
         // escape sql chars
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $name = mysqli_real_escape_string($conn, $_POST['name']);
-        $password = mysqli_real_escape_string($conn, $_POST['password']);
+        $password = md5(mysqli_real_escape_string($conn, $_POST["password"]));
         $area = mysqli_real_escape_string($conn, $_POST['area']);
         $ph_no = mysqli_real_escape_string($conn, $_POST['ph_no']);
         // create sql
@@ -101,7 +101,7 @@ if(isset($_POST['submit'])){
         <input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>">
         <div class="red-text"><?php echo $errors['name']; ?></div>
         <label>Password</label>
-        <input type="text" name="password" value="<?php echo htmlspecialchars($password) ?>">
+        <input type="password" name="password" value="<?php echo htmlspecialchars($password) ?>">
         <div class="red-text"><?php echo $errors['password']; ?></div>
         <label>Area</label>
         <input type="text" name="area" value="<?php echo htmlspecialchars($area) ?>">

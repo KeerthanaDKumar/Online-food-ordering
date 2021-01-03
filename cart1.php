@@ -1,4 +1,7 @@
 <?php   
+$email='';
+$place='';
+$errors = array('place' => '');
  session_start();  
  $connect = mysqli_connect("localhost", "KD", "12345676", "tasty-grab");  
  if(isset($_POST["add_to_cart"]))  
@@ -48,7 +51,46 @@
                 }  
            }  
       }  
- }  
+ }
+ if(isset($_POST["orders"])) {
+     if(empty($_POST['place'])){
+          $errors['place'] = 'Enter place of Delivery';
+     } 
+     else{
+          $place = $_POST['place'];
+          if(!preg_match('/^[a-zA-Z 0-9\s]+$/', $place)){
+               $errors['place'] = 'Place name must be a letters';
+          }
+     }
+   $place=  mysqli_real_escape_string($connect, $_POST['place']);
+   $email=$_SESSION['email'];
+   if(!empty($_SESSION["shopping_cart"]))  
+   {  
+        $total = 0;  
+        foreach($_SESSION["shopping_cart"] as $keys => $values)  
+        {  $pizza_name= $values["item_name"];
+          $qty=$values["item_quantity"];
+          $total=number_format($values["item_quantity"] * $values["item_price"], 2);
+          $sql= "INSERT INTO `orders` (`order_id`, `email_id`, `pizza_name`, `area`, `qty`, `total`, `time`) VALUES (NULL, '$email', '$pizza_name','$place', '$qty', '$total', CURRENT_TIMESTAMP)";
+          if(mysqli_query($connect, $sql))
+          {
+               // success
+               
+           
+           unset($_SESSION["shopping_cart"][$keys]);
+
+          } 
+
+          }
+         
+
+         
+         
+ }
+  
+}
+
+
  ?>  
  <!DOCTYPE html>  
  <html>  
@@ -65,9 +107,11 @@
            <div class="container " >
             <a href="#" class="brand-logo brand-text">Tasty Grab!!</a>
            <ul id="nav-mobile" class="right hide-on-small-and-down">
-            <li><a href="#order" ><input  type="submit"style="margin-top:5px;" class="btn btn-success" value="ORDER"></a></li>
+            <li><a href="#order" ><input  type="submit"style="margin-top:5px;" class="btn btn-success" value="ORDER DETAILS"></a></li>
             <li><a href="logout.php" ><input  type="submit" style="margin-top:5px;" class="btn btn-success" value="LOGOUT"></a></li>
-         </ul>
+            <li><a href="vieworders.php" ><input  type="submit" style="margin-top:5px;" class="btn btn-success" value="ORDERS HISTORY"></a></li>
+
+          </ul>
        </div>
        </nav>
 
@@ -84,9 +128,10 @@
                 <div class="col-md-4">  
                      <form method="post" action="cart1.php?action=add&id=<?php echo $row["pizza_name"]; ?>">  
                           <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">  
-                               <img src="images/pizza1.jpg" class="img-responsive" /><br />    
+                               <img src="images/pizza1.jpg" class="img-responsive" /><br /> 
+                               <h5 class="text-danger"><?php echo $row["pizza_name"]; ?></h5>   
                                <h4 class="text-danger">Rs.<?php echo $row["cost"]; ?></h4>  
-                               <input type="text" name="quantity" class="form-control" value="1" />  
+                               <h6>QTY<input type="text" name="quantity" class="form-control" value="1" /></h6>  
                                <input type="hidden" name="hidden_name" value="<?php echo $row["pizza_name"]; ?>" />  
                                <input type="hidden" name="hidden_price" value="<?php echo $row["cost"]; ?>" />  
                                <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />  
@@ -132,7 +177,13 @@
                                <td align="right">Rs.<?php echo number_format($total, 2); ?></td>  
                                <td></td>  
                           </tr>  
-                          <tr><td colspan="5" align="center" class="center"><a href="orders.php" ><input  type="submit" style="margin-top:5px;" class="btn btn-success" value="CONFIRM ORDER"></td></a></tr>
+                          <form  method="post" action="cart1.php"><label>Enter Place of Delivery</label>
+			           <input type="text" name="place" value="<?php echo htmlspecialchars($place) ?>">
+			           <div class="red-text"><?php echo $errors['place']; ?></div>
+                          <div class="center">
+				      <input type="submit" name="orders" value="Confirm Order" class="btn brand z-depth-0">
+                         </div>
+                          </form>
                           <?php  
                           }  
                           ?>  

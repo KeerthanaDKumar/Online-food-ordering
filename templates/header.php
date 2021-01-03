@@ -27,7 +27,7 @@
      <a href="#" class="brand-logo brand-text">Tasty Grab!!</a>
       <ul id="nav-mobile" class="right hide-on-small-and-down">
         <li><a href="Signup.php" class="btn brand z-depth-0">SIGN UP</a></li>
-		<li><a href="login.php" class="btn brand z-depth-0">Login</a></li>
+		<li><a href="login1.php" class="btn brand z-depth-0">Login</a></li>
 		<li><a href="admin.php" class="btn brand z-depth-0">Admin</a></li>
       </ul>
     </div>
