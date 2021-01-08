@@ -99,8 +99,8 @@ echo '<br /><a href="vieworders.php?' . SID . '"></a>';
                // success
                
            
-               mail('$email','Order Confirmation','TASTY-GRAB!!\nYOUR ORDER OF $values["item_name"] is Confirmed\n Thank you','FROM: official.tasty.grab@gmail.com');
-               mail('dvpk511@gmail.com','New Order','TASTY-GRAB!!\n New ORDER From $values["item_name"] \n Thank you','FROM: official.tasty.grab@gmail.com');
+               mail('$email','Order Confirmation','TASTY-GRAB!!\nYOUR ORDER OF $values["item_name"] is Confirmed\n Thank you','FROM: official.tastygrab@yahoo.com');
+               mail('dvpk511@gmail.com','New Order','TASTY-GRAB!!\n New ORDER From $values["item_name"] \n Thank you','FROM: official.tastygrab@yahoo.com');
           
                echo '<script>alert("Order Confirmed");</script>';
           } 

@@ -32,8 +32,8 @@
 		$sql = "DELETE FROM orders WHERE order_id = $order_id";
 
 		if(mysqli_query($conn, $sql)){
-      mail('$email','Order Cancelled','TASTY-GRAB!!\nYOUR ORDER OF $order_id is Cancelled\n Thank you','FROM: official.tasty.grab@gmail.com');
-      mail('dvpk511@gmail.com','Cancelled Order','TASTY-GRAB!!\n Cancelled ORDER From $order_id \n Thank you','FROM: official.tasty.grab@gmail.com');
+      mail('$email','Order Cancelled','TASTY-GRAB!!\nYOUR ORDER OF $order_id is Cancelled\n Thank you','FROM: official.tastygrab@yahoo.com');
+      mail('dvpk511@gmail.com','Cancelled Order','TASTY-GRAB!!\n Cancelled ORDER From $order_id \n Thank you','FROM: official.tastygrab@yahoo.com');
  
             echo '<script>alert("Deleted Order");</script>';
 			
@@ -94,7 +94,7 @@
       <td width="10%"><h6><?php echo htmlspecialchars($pizza['qty']); ?></h6></td>
       <td width="10%"><h6><?php echo htmlspecialchars($pizza['total']); ?></h6></td>
       <td width="15%"><h6><?php echo htmlspecialchars($pizza['time']); ?></h6></td>
-    <td width ="15%"> <form action="adminpage.php" method="POST">
+    <td width ="15%"> <form action="vieworders.php" method="POST">
 				<input type="hidden" name="order_id" value="<?php echo $pizza['order_id']; ?>">
 				<input type="submit" name="delete" value="Delete" class="btn brand z-depth-0">
 			</form>
