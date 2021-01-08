@@ -23,6 +23,7 @@
 		$sql = "DELETE FROM orders WHERE order_id = $order_id";
 
 		if(mysqli_query($conn, $sql)){
+      mail('$email','Order Delivered','TASTY-GRAB!!\nYOUR ORDER OF $order_id is Delivered Succesfully\n Thank you','FROM: official.tasty.grab@gmail.com');
             echo '<script>alert("Deleted Order");</script>';
 			
 		} else {
