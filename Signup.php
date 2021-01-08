@@ -74,7 +74,7 @@ if(isset($_POST['submit'])){
         // save to db and check
         if(mysqli_query($conn, $sql)){
             // success
-            header('Location: login.php');
+            header('Location: login1.php');
         } else {
             echo '<script>alert("Email Already Exist")</script>';
         }

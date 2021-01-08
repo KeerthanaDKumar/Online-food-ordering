@@ -1,8 +1,16 @@
 <?php   
 $email='';
 $place='';
+
 $errors = array('place' => '');
- session_start();  
+ session_start(); 
+ $email=$_SESSION['email'];
+ $_SESSION['vemail']=$email;
+ // Works if session cookie was accepted
+echo '<br /><a href="vieworders.php"></a>';
+
+// Or pass along the session id, if needed
+echo '<br /><a href="vieworders.php?' . SID . '"></a>';
  $connect = mysqli_connect("localhost", "KD", "12345676", "tasty-grab");  
  if(isset($_POST["add_to_cart"]))  
  {  
@@ -77,7 +85,7 @@ $errors = array('place' => '');
           }
      }
    $place=  mysqli_real_escape_string($connect, $_POST['place']);
-   $email=$_SESSION['email'];
+
    if(!empty($_SESSION["shopping_cart"]))  
    {  
         $total = 0;  
@@ -206,6 +214,7 @@ $errors = array('place' => '');
                 </div>  
            </div>  
            <br />  
+           <? php echo '<br /><a href="vieworders.php?' . SID . '"></a>'; ?>
       </body>  
  </html>
    

@@ -1,16 +1,24 @@
 <?php
   $order_id='';
+  session_start();
+  $email=$_SESSION['vemail'];
 
-	include('config/db_connect.php');
 
+
+  include('config/db_connect.php');
+  $connect = mysqli_connect("localhost", "KD", "12345676", "tasty-grab");
+
+  $email = mysqli_real_escape_string($connect, $_SESSION['vemail']);
+  
 	// write query for all pizzas
-	$sql = "SELECT * FROM orders where email_id = 'keerthana5112k@gmail.com'";
+	$sql = "SELECT * FROM orders where email_id = '".$email."' ";
 
 	// get the result set (set of rows)
 	$result = mysqli_query($conn, $sql);
 
 	// fetch the resulting rows as an array
-	$pizzas = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+  $pizzas = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 	// free the $result from memory (good practise)
 	mysqli_free_result($result);
@@ -55,11 +63,21 @@
     </div>
   </nav>
 
-           
- 
 	<h4 class="center grey-text">ORDER DETAILS</h4>
     <div class="table-responsive">
+<table>
+    <thead>
+    <tr>
+      <th scope="col" width="10%">Pizza Name</th>
+      <th scope="col" width="20%">Address of Delivery</th>
+      <th scope="col" width="10%">Quantity</th>
+      <th scope="col" width="10%">Total Amount</th>
+      <th scope="col" width="15%">Order time</th>
+      <th scope="col" width="15%"></th>
 
+    </tr>
+  </thead>
+</table>
     </div>
     <?php foreach($pizzas as $pizza): ?>
         <div class="table-responsive">
@@ -68,13 +86,12 @@
   <tbody>
  
     <tr>
-      
       <td width="10%"><h6><?php echo htmlspecialchars($pizza['pizza_name']); ?></h6></td>
       <td width="20%"><h6><?php echo htmlspecialchars($pizza['area']); ?></h6></td>
       <td width="10%"><h6><?php echo htmlspecialchars($pizza['qty']); ?></h6></td>
       <td width="10%"><h6><?php echo htmlspecialchars($pizza['total']); ?></h6></td>
       <td width="15%"><h6><?php echo htmlspecialchars($pizza['time']); ?></h6></td>
-    <td width ="15%"> <form action="vieworders.php" method="POST">
+    <td width ="15%"> <form action="adminpage.php" method="POST">
 				<input type="hidden" name="order_id" value="<?php echo $pizza['order_id']; ?>">
 				<input type="submit" name="delete" value="Delete" class="btn brand z-depth-0">
 			</form>
@@ -89,5 +106,5 @@
 	</div>
 
 	<?php include('templates/footer.php'); ?>
-</body>
+
 </html>
