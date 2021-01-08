@@ -26,7 +26,7 @@
      <div class="container " >
      <a href="#" class="brand-logo brand-text">Tasty Grab!!</a>
       <ul id="nav-mobile" class="right hide-on-small-and-down">
-        <li><a href="Main.php" class="btn brand z-depth-0"><input type="button" value="Back"></a></li>
+        <li><a href="adminpage.php" class="btn brand z-depth-0"><input type="button" value="Back"></a></li>
       </ul>
     </div>
   </nav>

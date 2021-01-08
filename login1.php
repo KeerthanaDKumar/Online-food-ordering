@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
             $errors['password'] = 'Password Invalid';
         }
     }}
-session_start();
+
 $connect = mysqli_connect("localhost", "KD", "12345676", "tasty-grab");
 if(isset($_POST["email"]) && isset($_POST["password"]))
 {
@@ -33,7 +33,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
  $result = mysqli_query($connect, $sql);
  $num_row = mysqli_num_rows($result);
  if($num_row > 0)
- {
+ {  session_start();
   $data = mysqli_fetch_array($result);
   $_SESSION["email"] = $data["email"];
   $_SESSION['email'] =$email;
@@ -51,7 +51,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]))
 <html>
     
     <?php include('templates/header.php'); ?>
-
+    <p hidden><a href="vieworders.php"></a></p>
     <section class="container grey-text">
         <h4 class="center">Login</h4>
         <form class="white" action="login1.php" method="POST">

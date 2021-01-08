@@ -27,8 +27,10 @@
      <a href="#" class="brand-logo brand-text">Tasty Grab!!</a>
       <ul id="nav-mobile" class="right hide-on-small-and-down">
         <li>ADMIN Page</li>
-        <li><a href="#" class="btn brand z-depth-0">ADD PIZZA</a></li>
-        <li><a href="#" class="btn brand z-depth-0">VIEW ORDERS</a></li>
+        <li><a href="add.php" class="btn brand z-depth-0">ADD PIZZA</a></li>
+        <li><a href="adminpage.php" class="btn brand z-depth-0">VIEW ORDERS</a></li>
+        <li><a href="Main.php" class="btn brand z-depth-0">LOGOUT</a></li>
+        <li><a href="viewfeedback.php" class="btn brand z-depth-0">Customer feedback</a></li>
       </ul>
     </div>
   </nav>

@@ -29,6 +29,8 @@
         <li><a href="Signup.php" class="btn brand z-depth-0">SIGN UP</a></li>
 		<li><a href="login1.php" class="btn brand z-depth-0">Login</a></li>
 		<li><a href="admin.php" class="btn brand z-depth-0">Admin</a></li>
+		<li><a href="menu.php" class="btn brand z-depth-0">Menu</a></li>
+		<li><a href="Main.php" class="btn brand z-depth-0">Home</a></li>
       </ul>
     </div>
   </nav>

@@ -52,7 +52,21 @@ $errors = array('place' => '');
            }  
       }  
  }
+
+ if(isset($_POST['submit'])){
+     if(empty($_POST['place'])){
+          $errors['place'] = 'Enter Place';
+      } else{
+          $place = $_POST['place'];
+          if(!preg_match('/^[a-zA-Z0-9\s]+$/', $name)){
+              $errors['Place'] = 'Enter Valid input';
+          }
+      }
+     }
+ if(array_filter($errors)){
+}else{
  if(isset($_POST["orders"])) {
+     
      if(empty($_POST['place'])){
           $errors['place'] = 'Enter place of Delivery';
      } 
@@ -69,15 +83,15 @@ $errors = array('place' => '');
         $total = 0;  
         foreach($_SESSION["shopping_cart"] as $keys => $values)  
         {  $pizza_name= $values["item_name"];
-          $qty=$values["item_quantity"];
-          $total=number_format($values["item_quantity"] * $values["item_price"], 2);
+          $qty=number_format($values["item_quantity"]);
+          $total=number_format($values["item_quantity"] * $values["item_price"],2);
           $sql= "INSERT INTO `orders` (`order_id`, `email_id`, `pizza_name`, `area`, `qty`, `total`, `time`) VALUES (NULL, '$email', '$pizza_name','$place', '$qty', '$total', CURRENT_TIMESTAMP)";
           if(mysqli_query($connect, $sql))
           {
                // success
-               
+               echo '<script>alert("Order Confirmed");</script>';
            
-           unset($_SESSION["shopping_cart"][$keys]);
+          
 
           } 
 
@@ -85,8 +99,8 @@ $errors = array('place' => '');
          
 
          
-         
- }
+          unset($_SESSION["shopping_cart"]);      
+ }}
   
 }
 
@@ -110,6 +124,7 @@ $errors = array('place' => '');
             <li><a href="#order" ><input  type="submit"style="margin-top:5px;" class="btn btn-success" value="ORDER DETAILS"></a></li>
             <li><a href="logout.php" ><input  type="submit" style="margin-top:5px;" class="btn btn-success" value="LOGOUT"></a></li>
             <li><a href="vieworders.php" ><input  type="submit" style="margin-top:5px;" class="btn btn-success" value="ORDERS HISTORY"></a></li>
+            <li><a href="feedback.php" ><input  type="submit" style="margin-top:5px;" class="btn btn-success" value="Feedback"></a></li>
 
           </ul>
        </div>

@@ -1,60 +1,93 @@
-<?php 
-session_start();
-$email= $_SESSION['email'];
+<?php
+  $order_id='';
 
 	include('config/db_connect.php');
-    $orders = mysqli_real_escape_string($conn, $_SESSION['email']);
+
 	// write query for all pizzas
-	$sql = "SELECT * FROM orders where email_id =$email ";
+	$sql = "SELECT * FROM orders where email_id = 'keerthana5112k@gmail.com'";
 
 	// get the result set (set of rows)
 	$result = mysqli_query($conn, $sql);
 
 	// fetch the resulting rows as an array
-	$orders = mysqli_fetch_assoc($result);
-
+	$pizzas = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 	// free the $result from memory (good practise)
 	mysqli_free_result($result);
 
 	// close connection
-	mysqli_close($conn);
+   
+    if(isset($_POST['delete'])){
 
+		$order_id = mysqli_real_escape_string($conn, $_POST['order_id']);
+
+		$sql = "DELETE FROM orders WHERE order_id = $order_id";
+
+		if(mysqli_query($conn, $sql)){
+            echo '<script>alert("Deleted Order");</script>';
+			
+		} else {
+			echo 'query error: '. mysqli_error($conn);
+		}
+
+    }
+    mysqli_close($conn);
 
 ?>
 
 <!DOCTYPE html>
 <html>
-	
-	<?php include('menuheader.php'); ?>
+<!DOCTYPE html>  
+ <html>  <head>
+ <title>History</title>
 
-	<h4 class="center grey-text">Previous orders!</h4>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-	<div class="container">
-		<div class="row">
+	  <body>  
+	  <nav class="black lighten-2">
+     <div class="container " >
+     <a href="#" class="brand-logo brand-text">Tasty Grab!!</a>
+      <ul id="nav-mobile" class="right hide-on-small-and-down">
+        <li><a href="cart1.php" class="btn brand z-depth-0">ORDER</a></a></li>
+		<li><a href="logot.php" class="btn brand z-depth-0">LOGOUT</a></li>
+		<li><a href="vieworders.php" class="btn brand z-depth-0">VIEW ORDERS</a></li>
+      </ul>
+    </div>
+  </nav>
 
-			<?php foreach($orders as $order): ?>
+           
+ 
+	<h4 class="center grey-text">ORDER DETAILS</h4>
+    <div class="table-responsive">
 
-				<div class="col s6 m4">
-					<div class="card z-depth-0">
-						<img src="images/pizza1.jpg"class="pizza">
-						<div class="card-content center">
-                            <h6><?php echo htmlspecialchars($orders['pizza_name']); ?></h6>
-                            <h6><?php echo htmlspecialchars($orders['area']); ?></h6>
-                             <h6><?php echo htmlspecialchars($orders['qty']); ?></h6>
-                             <h6><?php echo htmlspecialchars($orders['total']); ?></h6>
-                             <h6><?php echo htmlspecialchars($orders['time']); ?></h6>
+    </div>
+    <?php foreach($pizzas as $pizza): ?>
+        <div class="table-responsive">
+        <table class="table">
 
-						</div>
-						
-					</div>
-				</div>
-
+  <tbody>
+ 
+    <tr>
+      
+      <td width="10%"><h6><?php echo htmlspecialchars($pizza['pizza_name']); ?></h6></td>
+      <td width="20%"><h6><?php echo htmlspecialchars($pizza['area']); ?></h6></td>
+      <td width="10%"><h6><?php echo htmlspecialchars($pizza['qty']); ?></h6></td>
+      <td width="10%"><h6><?php echo htmlspecialchars($pizza['total']); ?></h6></td>
+      <td width="15%"><h6><?php echo htmlspecialchars($pizza['time']); ?></h6></td>
+    <td width ="15%"> <form action="vieworders.php" method="POST">
+				<input type="hidden" name="order_id" value="<?php echo $pizza['order_id']; ?>">
+				<input type="submit" name="delete" value="Delete" class="btn brand z-depth-0">
+			</form>
+    </td>
+    </tr>
+  </tbody>
+</table>
+        </div>
 			<?php endforeach; ?>
 
 		</div>
 	</div>
 
 	<?php include('templates/footer.php'); ?>
-
+</body>
 </html>
