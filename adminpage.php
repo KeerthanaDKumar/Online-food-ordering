@@ -18,12 +18,13 @@
    
     if(isset($_POST['delete'])){
 
-		$order_id = mysqli_real_escape_string($conn, $_POST['order_id']);
+    $order_id = mysqli_real_escape_string($conn, $_POST['order_id']);
+    $email_id = mysqli_real_escape_string($conn, $_POST['email_id']);
 
 		$sql = "DELETE FROM orders WHERE order_id = $order_id";
 
 		if(mysqli_query($conn, $sql)){
-      mail('$email','Order Delivered','TASTY-GRAB!!\nYOUR ORDER OF $order_id is Delivered Succesfully\n Thank you','FROM: official.tastygrab@yahoo.com');
+      mail('$email_id','Order Delivered','TASTY-GRAB!!\nYOUR ORDER OF $order_id is Delivered Succesfully\n Thank you','FROM: official.tastygrab@yahoo.com');
             echo '<script>alert("Deleted Order");</script>';
 			
 		} else {
@@ -72,6 +73,7 @@
       <td width="15%"><h6><?php echo htmlspecialchars($pizza['time']); ?></h6></td>
     <td width ="15%"> <form action="adminpage.php" method="POST">
 				<input type="hidden" name="order_id" value="<?php echo $pizza['order_id']; ?>">
+        <input type="hidden" name="email_id" value="<?php echo $pizza['email_id']; ?>">
 				<input type="submit" name="delete" value="Delete" class="btn brand z-depth-0">
 			</form>
     </td>
