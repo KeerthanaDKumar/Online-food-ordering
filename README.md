@@ -4,5 +4,6 @@ Front End - HTML,CSS,Javascript,Bootstrap,Materialize
 Backend- PHP
 Database- MySQL
 web server-xampp
+jenkins - continious integration
 Selenium- testing
 trello
